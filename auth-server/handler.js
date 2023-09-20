@@ -13,14 +13,17 @@ const oAuth2Client = new google.auth.OAuth2(
   CLIENT_SECRET,
   redirect_uris[0]
 );
-//This instance accepts CLIENT_ID, CLIENT_SECRET, and the redirect URL as parameters.
 
 module.exports.getAuthURL = async () => {
+  /**
+   *
+   * Scopes array is passed to the `scope` option.
+   *
+   */
   const authUrl = oAuth2Client.generateAuthUrl({
     access_type: "offline",
     scope: SCOPES,
   });
-  // which allows you to seamlessly retrieve an access token, refresh it, and retry the request.
 
   return {
     statusCode: 200,
